@@ -114,6 +114,15 @@ public class DefaultPathFinderTest
     assertEquals( "D2", path.get(2).to  .name );
   } 
 
+  @Test
+  public void test_findPath_shouldReportNoPathWhenThereIsNone()
+  { 
+    Square unconnected = bored.new Square( 99, 99, false );
+    Square d5 = getSquare( 4, 3, "D5" );
+    subject.findPath( path, d5, unconnected, unitType );
+    assertEquals( 0, path.size() );
+  } 
+  
   private Square getSquare( int m, int n, String name )
   { 
     Square it = bored.squares[m][n];
